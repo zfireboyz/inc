@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ผู้จัดจำหน่าย Machine Tools และ Cutting Tools ประสิทธิภาพสูง ตอบโจทย์ทุกอุตสาหกรรมการผลิต">
+    <title>Increase Intertrade</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Kanit & Orbitron (For Tech Vibe) -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kanit', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1d4ed8', // Blue 700 - ดุดันและน่าเชื่อถือ
+                        secondary: '#f0f9ff', // Sky 50 - สบายตา
+                        accent: '#0ea5e9', // Sky 500 - ไฮไลท์ดูล้ำสมัย
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f4f4f5; /* Zinc 100 for industrial feel */
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85); /* Darker glass for aggressive tech look */
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        /* ---- Service card component ---- */
+        .service-card {
+            background: #ffffff;
+            border: 1px solid #e4e4e7;
+            border-radius: 0.5rem; /* Sharp corners for industrial vibe */
+            padding: 1.75rem;
+            transition: all .3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background-color: #1d4ed8;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
+        }
+        .service-card:hover {
+            background: #f8fafc;
+            border-color: #93c5fd;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(29, 78, 216, 0.1);
+        }
+        .service-card:hover::before {
+            transform: scaleY(1);
+        }
+        .service-icon {
+            width: 4rem;
+            height: 4rem;
+            background: #f1f5f9;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: #1d4ed8;
+            margin-bottom: 1.25rem;
+            transition: all .3s ease;
+        }
+        .service-card:hover .service-icon { 
+            transform: scale(1.1) rotate(-5deg); 
+            background: #1d4ed8;
+            color: #ffffff;
+        }
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', 'Kanit', sans-serif;
+            text-transform: uppercase;
+        }
+        .service-desc {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .service-desc:last-child { margin-bottom: 0; }
+        .highlight-text { color: #0ea5e9; font-weight: 600; }
+
+        /* --- Animation ข้อความวิ่งตรงกลางเมนู --- */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+            padding-left: 100%;
+        }
+        .marquee-wrapper:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 border-b-2 border-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-black text-primary font-tech tracking-wider">
+                        <img src="logo.png" alt="Logo" class="h-8 w-auto mr-2 inline-block object-contain">INCREASE<span class="text-slate-800">-INTERTRADE</span>
+                    </span>
+                </div>
+                <!-- Marquee -->
+                <div class="hidden md:block flex-1 mx-8 overflow-hidden whitespace-nowrap marquee-wrapper">
+                    <div class="animate-marquee text-slate-700 font-medium text-lg">
+                        INCREASE YOUR <span class="text-red-600 font-semibold">MAXIMUM</span> PROFIT
+                       
+                    </div>
+                </div>
+                <!-- Contact Button (Desktop) -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#products" class="text-slate-600 hover:text-primary font-bold transition">สินค้าของเรา</a>
+                    <a href="#contact" class="text-slate-600 hover:text-primary font-bold transition">ติดต่อวิศวกร</a>
+                    <a href="#contact" class="bg-primary text-white px-6 py-2 rounded-sm font-bold hover:bg-blue-800 transition shadow-lg hover:shadow-primary/50 border border-transparent hover:border-blue-400">
+                        <i class="fa-solid fa-bolt mr-2"></i> ขอใบเสนอราคา
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-primary overflow-hidden">
+        <!-- Decorative Industrial Lines -->
+        <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgc3Ryb2tlPSIjMzhCREY4IiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPjxwb2x5Z29uIHBvaW50cz0iMzAsMCA2MCwzMCAzMCw2MCAwLDMwIi8+PC9nPjwvc3ZnPg==')]"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full mix-blend-screen filter blur-[100px] opacity-40"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div class="text-center lg:text-left order-2 lg:order-1">
+                    <div class="inline-block bg-blue-900/50 backdrop-blur-sm text-accent text-sm px-4 py-1.5 rounded-sm font-bold mb-6 border border-blue-500/30">
+                        <i class="fa-solid fa-microchip mr-2"></i> HIGH PERFORMANCE MACHINING SOLUTIONS
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight tracking-tight">
+                        ทะลุขีดจำกัดการผลิต<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-600">ดุดัน แม่นยำ ทุกรอยตัด</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 mb-8 font-light">
+                        เราคือผู้เชี่ยวชาญด้าน Machine Tools และ Cutting Tools บริการด้านเครื่องจักร CNC และอุปกรณ์ตัดเฉือนโลหะคุณภาพสูงระดับโลก พร้อมทีมวิศวกรให้คำปรึกษาเพื่อลดต้นทุนและเพิ่มผลผลิตให้โรงงานของคุณอย่างยั่งยืน
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#products" class="bg-accent hover:bg-sky-400 text-slate-900 px-8 py-3 rounded-sm font-bold text-lg transition text-center flex items-center justify-center shadow-[0_0_15px_rgba(14,165,233,0.5)]">
+                            <i class="fa-solid fa-gear mr-2 fa-spin-hover"></i> ดูผลิตภัณฑ์ทั้งหมด
+                        </a>
+                        <a href="#contact" class="bg-transparent hover:bg-slate-800 text-white border-2 border-slate-500 hover:border-slate-400 px-8 py-3 rounded-sm font-bold text-lg transition text-center">
+                            ปรึกษาผู้เชี่ยวชาญ
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
+                    <div class="relative w-full max-w-md aspect-square bg-gradient-to-tr from-primary to-slate-800 rounded-lg p-1 shadow-2xl transform lg:rotate-3 hover:rotate-0 transition duration-500">
+                        <div class="absolute inset-0 bg-accent blur-3xl opacity-20 -z-10"></div>
+                        <img src="CuttingTool.jpg" alt="CNC Machine Tool" class="w-full h-full object-cover rounded-md border border-slate-700">
+                        
+                        <!-- Tech Badge -->
+                        <div class="absolute -bottom-6 -left-6 bg-slate-900 p-4 rounded-sm shadow-xl border-l-4 border-accent flex items-center space-x-4">
+                            <div class="bg-primary/20 text-accent w-12 h-12 rounded-full flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-tachometer-fast"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase tracking-wider">Good Surface</p>
+                                <p class="font-bold text-white text-lg">High Accuracy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6 Core Products Section -->
+    <section id="products" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4 tracking-tight uppercase font-tech">OUR CORE <span class="text-primary">PRODUCTS</span></h2>
+                <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                <p class="text-slate-600 max-w-4xl mx-auto text-lg">6 หมวดหมู่เครื่องมืออุตสาหกรรมที่ดีที่สุด เพื่อยกระดับสายการผลิตของคุณให้ล้ำหน้ากว่าใคร</p>
+            </div>
+
+            <!-- Grid Layout for 6 Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Category 1 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h3 class="service-title">1. CNC Machine Tools</h3>
+                    <p class="service-desc">เครื่องกัด (Milling) และเครื่องกลึง (Turning) อัตโนมัติความแม่นยำสูง โครงสร้างแข็งแกร่งทนทาน รองรับงานอุตสาหกรรมหนักและการผลิตแบบ Mass Production</p>
+                    <p class="service-desc mt-2"><span class="highlight-text">จุดเด่น:</span> ความเที่ยงตรงระดับไมครอน, รวมถึงความรวดเร็วในการทำงาน</p>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-screw-drill"></i> <!-- Using alternative icon logic for milling -->
+                        <i class="fa-solid fa-compact-disc"></i>
+                    </div>
+                    <h3 class="service-title">2. Milling Tools</h3>
+                    <p class="service-desc">ดอกเอ็นมิล (End Mills) และหัวกัด (Milling Cutters) เกรดคาร์ไบด์พิเศษ เคลือบผิว (Coating) ทนความร้อนสูง ช่วยให้กัดงานโลหะแข็งได้รวดเร็วและผิวงานเรียบเนียน</p>
+                    <p class="service-desc mt-2"><span class="highlight-text">รองรับ:</span> งานกัดหยาบ, งานกัดละเอียด, อลูมิเนียม, เหล็กชุบแข็ง</p>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                    </div>
+                    <h3 class="service-title">3. Turning Inserts</h3>
+                    <p class="service-desc">เม็ดมีดกลึง (Turning Inserts) ดีไซน์คมตัดดุดัน หักเศษโลหะได้อย่างยอดเยี่ยม ลดปัญหาเศษพันชิ้นงาน ยืดอายุการใช้งาน (Tool Life) ได้ยาวนานกว่าปกติ</p>
+                    <p class="service-desc mt-2"><span class="highlight-text">ครอบคลุม:</span> งานกลึงปอก, กลึงเกลียว, กลึงร่อง, คว้าน</p>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="service-title">4. Drilling & Holemaking</h3>
+                    <p class="service-desc">ดอกสว่านและอุปกรณ์เจาะรูความเร็วสูง (High-Speed Drills) เจาะทะลุทะลวงแม่นยำ ไม่แกว่ง ระบายเศษได้ดีเยี่ยม ลดรอบเวลา (Cycle Time) ในการทำงาน</p>
+                    <p class="service-desc mt-2"><span class="highlight-text">ผลิตภัณฑ์:</span> ดอกสว่านคาร์ไบด์, สว่านหัวสวม (Modular Drills), ต๊าปเกลียว</p>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-hand-fist"></i>
+                    </div>
+                    <h3 class="service-title">5. Tool Holders</h3>
+                    <p class="service-desc">หัวจับเครื่องมือ (Tool Holders) ที่มีความเที่ยงตรงสูง (High Runout Accuracy) ช่วยจับยึดดอกกัดได้อย่างมั่นคง ลดการสั่นสะเทือน (Vibration) เพื่อยืดอายุทูล</p>
+                    <p class="service-desc mt-2"><span class="highlight-text">ระบบ:</span> Shrink Fit, Hydraulic Chuck, ER Collet Chuck</p>
+                </div>
+
+                <!-- Category 6 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-microscope"></i>
+                    </div>
+                    <h3 class="service-title">6. Automation</h3>
+                    <p class="service-desc">เน้นภาพรวมอัจฉริยะ: โซลูชันระบบอัตโนมัติและหุ่นยนต์แขนกลอุตสาหกรรม เชื่อมต่อข้อมูลด้วยเทคโนโลยี IoT แบบ Real-time เพื่อโรงงานอัจฉริยะและประสิทธิภาพการผลิตขั้นสูงสุด</p>
+                    <p class="service-desc mt-2"><span class="highlight-text">ออกแบบ:</span> Automation, Robot, IoT</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+        <!-- Trusted Brands / Partners Section -->
+    <section class="py-16 bg-white border-t border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-10">
+                <h3 class="text-2xl md:text-3xl font-black text-slate-900 uppercase font-tech tracking-tight">
+                    TRUSTED BY LEADING <span class="text-primary">BRANDS</span>
+                </h3>
+                <p class="text-slate-500 text-sm md:text-base mt-2">
+                    พันธมิตรและแบรนด์ชั้นนำระดับสากลที่เราคัดสรรเพื่อคุณภาพการผลิตสูงสุด
+                </p>
+                <div class="w-16 h-1 bg-accent mx-auto mt-4"></div>
+            </div>
+
+             <!-- 12 Brand Logos Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+                <!-- Brand 1 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="Accuvision.png" alt="Brand 1" class="max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- Brand 2 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="Achteck.jpeg" alt="Brand 2" class="max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- Brand 3 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="Ceratizit.jpeg" alt="Brand 3" class="max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- Brand 4 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="Fonhae.jpeg" alt="Brand 4" class="max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- Brand 5 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="Funix.jpg" alt="Brand 5" class="max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- Brand 6 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="Horn.jpeg" alt="Brand 6" class="max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- Brand 7 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="HTECH.jpg" alt="Brand 7" class="max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- Brand 8 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="Schunk.jpeg" alt="Brand 8" class="max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- Brand 9 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="Sphinx.jpeg" alt="Brand 9" class="max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- Brand 10 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="Vending.jpeg" alt="Brand 10" class="max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- Brand 11 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="YT.jpeg" alt="Brand 11" class="max-h-20 w-auto object-contain">
+                </div>
+
+                <!-- Brand 12 -->
+                <div class="flex items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-100 h-24">
+                    <img src="Zoller.png" alt="Brand 12" class="max-h-20 w-auto object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 bg-gray-900 text-white relative overflow-hidden mt-auto">
+        <!-- Decorative bg -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full border-[40px] border-primary"></div>
+            <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full border-[40px] border-primary"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="glass-card bg-white/10 p-8 md:p-12 rounded-3xl text-center shadow-2xl">
+                <h2 class="text-3xl font-bold mb-4">ติดต่อสอบถาม</h2>
+                <p class="text-gray-300 mb-10 text-lg">ยินดีให้คำปรึกษา และนำเสนอโซลูชั่นที่ดีที่สุดให้สำหรับคุณ</p>
+                
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+                    
+                    <!-- Phone -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl mb-4 shadow-lg animate-pulse">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-1">โทรสอบถามโดยตรง</p>
+                        <a href="tel:0644266297" class="block text-3xl font-bold text-white hover:text-sky-300 transition">08-2996-4244</a>
+                        <a href="mailto:sales.incr@increase-intertrade.com" class="block text-xl text-gray-300 hover:text-sky-300 transition mt-1">sales.incr@increase-intertrade.com</a>
+                        <a href="mailto:sales@increase-intertrade.com" class="block text-xl text-gray-300 hover:text-sky-300 transition mt-1">sales@increase-intertrade.com</a>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="hidden md:block w-px h-32 bg-gray-600"></div>
+
+                    <!-- Line QR -->
+                    <div class="flex flex-col items-center">
+                        <div class="bg-white p-3 rounded-2xl shadow-lg mb-4">
+                            <img src="IMG_4357.JPG" oncontextmenu="return false;" draggable="false" alt="LINE QR Code" class="w-32 h-32 object-cover rounded-xl" onerror="this.src='https://placehold.co/128x128/ffffff/000000?text=QR+Code'">
+                        </div>
+                        <p class="text-sm text-gray-300 mb-1">สแกนเพื่อติดต่อผ่าน LINE</p>
+                        <p class="font-medium text-green-400"><i class="fa-brands fa-line mr-1"></i> แอดไลน์สอบถาม 24 ชม.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 text-center text-slate-500 text-sm border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 Increase Intertrade Co., Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+<button id="open-chat-btn" type="button" aria-label="เปิดช่องแชท" class="fixed bottom-5 right-5 z-50 bg-blue-600 hover:bg-blue-700 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition duration-200 text-2xl">
+    💬
+</button>
+
+<div id="chat-box" class="hidden fixed bottom-5 right-5 z-50 max-w-sm w-full bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden font-sans">
+    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-4 text-white flex justify-between items-center">
+        <div>
+            <h3 class="font-semibold text-lg">ฝากข้อความถึงเรา</h3>
+            <p class="text-xs text-blue-100">เราจะติดต่อกลับโดยเร็วที่สุด</p>
+        </div>
+        <button id="close-chat-btn" type="button" aria-label="ปิดช่องแชท" class="text-white hover:text-gray-200 text-xl font-bold p-1">✕</button>
+    </div>
+
+    <form id="contact-form" class="p-4 space-y-4">
+        <div>
+            <label class="form-label block mb-1">ชื่อ-นามสกุล</label>
+            <input type="text" name="user_name" placeholder="คุณสมชาย ใจดี" required class="form-input block w-full border border-gray-300 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <div>
+            <label class="form-label block mb-1">เบอร์โทรศัพท์</label>
+            <input type="tel" name="user_phone" placeholder="0XX-XXXXXXX" required class="form-input block w-full border border-gray-300 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <div>
+            <label class="form-label block mb-1">อีเมล</label>
+            <input type="email" name="user_email" placeholder="example@email.com" required class="form-input block w-full border border-gray-300 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <div>
+            <label class="form-label block mb-1">ข้อความที่ต้องการสอบถาม</label>
+            <textarea rows="3" name="message" placeholder="สนใจเครื่องมือตัด ช่วยแนะนำหน่อย" required class="form-input block w-full border border-gray-300 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg text-sm transition duration-200 shadow-md">
+            ส่งข้อมูลติดต่อกลับ
+        </button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+    emailjs.init("sz09PhPEweWvoirqu");
+</script>
+
+<script>
+    const openBtn = document.getElementById('open-chat-btn');
+    const closeBtn = document.getElementById('close-chat-btn');
+    const chatBox = document.getElementById('chat-box');
+    const contactForm = document.getElementById('contact-form');
+
+    // คลิกปุ่มวงกลม -> ซ่อนปุ่มวงกลม แล้วเปิดกล่องแชท
+    openBtn.addEventListener('click', () => {
+        chatBox.classList.remove('hidden');
+        openBtn.classList.add('hidden');
+    });
+
+    // คลิกปุ่ม X -> ซ่อนกล่องแชท แล้วแสดงปุ่มวงกลม
+    closeBtn.addEventListener('click', () => {
+        chatBox.classList.add('hidden');
+        openBtn.classList.remove('hidden');
+    });
+
+    // ส่ง Submit ฟอร์ม -> ส่งข้อมูลไปยัง EmailJS
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // ป้องกันไม่ให้หน้าเว็บโหลดใหม่
+
+        emailjs.sendForm('service_5sr2jkj', 'template_fluns6j', this)
+            .then(function () {
+                alert('ส่งข้อความสำเร็จแล้ว! เราจะติดต่อกลับโดยเร็วที่สุด');
+                contactForm.reset();
+            }, function (error) {
+                alert('เกิดข้อผิดพลาดในการส่ง: ' + JSON.stringify(error));
+            });
+    });
+</script>
+
+<!-- Vercel Speed Insights -->
+<script>
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+
+</body>
+</html>
